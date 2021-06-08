@@ -27,33 +27,31 @@
 //     console.log(payLoad);
 // }
 
-let showModalBtn = document.querySelector('.show-modal');
-let modal = document.querySelector('.modal');
-let closeBtn = document.querySelector('.close');
-let yesBtn = document.querySelector('#yes');
-let noBtn = document.querySelector('#no');
-let main = document.querySelector('main');
+const showModalBtn = document.querySelector('.show-modal');
+const modal = document.querySelector('.modal');
+const closeBtn = document.querySelectorAll('.close-modal');
+const yesBtn = document.querySelector('.yesBtn');
 
 showModalBtn.addEventListener("click", () => {
-  console.log("click");
-  modal.style.display = 'flex';
-  showModalBtn.style.display = "none";
+  showModal();
 })
 
-closeBtn.addEventListener("click", () => {
-  modal.style.display = 'none';
-  showModalBtn.style.display = "block";
+closeBtn.forEach(item => {
+  item.addEventListener("click", () => {
+    hideModal();
+  });
 });
 
 yesBtn.addEventListener("click", () => {
-  modal.style.display = 'none';
-  showModalBtn.style.display = "none";
-  let p = document.createElement('p');
-  main.append(p);
-  p.append("You said YES!!")
+  hideModal();
 })
 
-noBtn.addEventListener("click", () => {
+function showModal() {
+  modal.style.display = 'block';
+  showModalBtn.style.display = "none";
+}
+
+function hideModal() {
   modal.style.display = 'none';
   showModalBtn.style.display = "block";
-})
+}
